@@ -1,0 +1,20 @@
+{="<?php"|noescape}
+namespace Julie;
+
+{foreach $import as $class}
+require_once __DIR__ . '/{$class}.php';
+{/foreach}
+
+class {$name} extends Base {l}
+
+{foreach $steps as $step}
+    public function {$step->action}(${$step->param ?? "null"} = ''): {$step->return}
+    {
+{foreach $step->commands as $command}
+        {$command|noescape|replace,"__", 'self::$data'};
+{/foreach}
+        return new {$step->return};
+    }
+{/foreach}
+
+{r}

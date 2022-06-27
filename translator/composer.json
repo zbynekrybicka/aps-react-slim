@@ -1,0 +1,6 @@
+{
+    "require": {
+        "latte/latte": "^3.0",
+        "adbario/php-dot-notation": "^3.1"
+    }
+}

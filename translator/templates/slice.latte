@@ -1,0 +1,31 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {=json_encode($initialState)|noescape};
+
+
+export const counterSlice = createSlice({
+    name: 'store',
+    initialState,
+    reducers: {
+        modelChange: (state, action) => {
+            eval('state.' + action.payload[0] + ' = "' + action.payload[1] + '"')
+        },
+        showPreloader: (state) => {
+            state.preloader = true
+        },
+        hidePreloader: (state) => {
+            state.preloader = false
+        },
+{foreach $reducers as $reducer => $content}
+        {$reducer}: (state, action) => {
+{foreach $content as $line}
+            {$line}
+{/foreach}
+        },
+{/foreach}
+    },
+});
+
+export const { {foreach $reducers as $reducer => $content}{$reducer}, {/foreach}modelChange, showPreloader, hidePreloader } = counterSlice.actions;
+
+export default counterSlice.reducer;

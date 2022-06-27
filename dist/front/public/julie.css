@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+}
+
+
+.LoginForm {
+    position: absolute;
+    width: 95%;
+    left: 2.5%;
+    top: 25px;
+    text-align: right;
+}
+
+.LoginForm h1 {
+    text-align: center
+}
+
+.LoginForm input {
+    display: block;
+    width: calc(100% - 8px);
+    margin-bottom: 25px;
+}
+
+.LoginForm button {
+    background-color: #2e62a8;
+    padding: 15px 25px;
+    border: none;
+    font-weight: bold;
+}
+
+
+.Preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    z-index: 1;
+}
+
+.MainMenu {
+    display: block;
+    background-color: #0b2e13;
+    text-align: center;
+}
+
+.MainMenu span {
+    padding: 15px 25px;
+    background-color: #0b2e13;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.MainMenu span:hover {
+    background-color: white;
+    color: #0b2e13;
+}
+
+.Content {
+    padding: 10px
+}
+
+.ContactListListItem {
+    display: table-row;
+
+}
+
+.ContactListListItem span {
+    display: table-cell;
+    padding: 5px 15px;
+    border-bottom: 1px solid black;
+}
+
+.ContactListListItemClick {
+    cursor: pointer;
+}

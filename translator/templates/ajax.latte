@@ -1,0 +1,23 @@
+import axios from 'axios';
+import { {$then}, {$catch}, showPreloader, hidePreloader } from '../slice';
+import { store } from '../store';
+import { API_URL } from '../config';
+
+const {$name} = () => dispatch => {
+    dispatch(showPreloader())
+    axios.{$method}(API_URL + '{$url}',
+{if $data}
+            store.getState().data.{$state}, { {if $auth}headers: { Authorization: store.getState().data.authToken } {/if} }
+{else}
+            { params: store.getState().data.{$state}, {if $auth}headers: { Authorization: store.getState().data.authToken} {/if} }
+{/if})
+        .then(response => {
+            dispatch(hidePreloader())
+            dispatch({$then}(response.data))
+        }).catch(error => {
+            dispatch(hidePreloader())
+            dispatch({$catch}())
+        })
+}
+
+export default {$name};

@@ -1,0 +1,24 @@
+import React from 'react';
+import { connect } from 'react-redux'
+{foreach array_keys($importComponents) as $component}
+import {$component} from './{$component}';
+{/foreach}
+{foreach array_keys($importActions) as $action}
+import {$action} from '../actions/{$action}'
+{/foreach}
+import {l} {foreach array_keys($importReducers) as $reducer}{$reducer}, {/foreach}{r} from '../slice'
+
+function {$name}(props) {
+    return ({if count($elements) > 1}<div className="{$name}">{/if}
+{foreach $elements as $element}
+        {$element['before']|noescape}<{$element['name']}{foreach $element['attributes'] as $attribute}
+            {$attribute['name']}={$attribute['value']|noescape}{/foreach}{if $element['content']}>{$element['content']|noescape}</{$element['name']}>{else}/>{/if}{$element['after']|noescape}
+{/foreach}
+    {if count($elements) > 1}</div>{/if});
+}
+
+const mapStateToProps = (state) => {
+    return { state }
+}
+
+export default connect(mapStateToProps)({$name});
